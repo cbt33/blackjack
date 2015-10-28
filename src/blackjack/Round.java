@@ -48,7 +48,6 @@ public class Round {
 				}
 			}
 		}
-	}
 	
 	//Dealer reveals hole card and hits or stands
 	//If player total higher than dealers, player wins
