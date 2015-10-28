@@ -1,0 +1,7 @@
+package blackjack;
+
+public enum Choice {
+	
+	//DDH stands for Double Down else Hit, DDS double down else stand
+	HIT, STAND, DDH, SPLIT, SURRENDER, DDS  
+}

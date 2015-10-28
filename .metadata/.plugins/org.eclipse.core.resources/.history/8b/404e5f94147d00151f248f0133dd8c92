@@ -1,0 +1,5 @@
+package blackjack;
+
+public enum Choice {
+	HIT, STAND, DOUBLE_DOWN_HIT, SPLIT, SURRENDER, DOUBLE_DOWN_STAND  
+}

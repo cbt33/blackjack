@@ -1,0 +1,16 @@
+package blackjack;
+
+public class StrategyData {
+	private Card dealerUpCard;
+	private Hand playerHand;
+	
+	public StrategyData(Card dealerUpCard, Hand playerHand) {
+		super();
+		this.dealerUpCard = dealerUpCard;
+		this.playerHand = playerHand;
+	}
+	
+
+	
+	
+}

@@ -1,0 +1,21 @@
+package blackjack;
+
+import static blackjack.Choice.*;
+
+public class Strategy {
+	
+	private static final Choice[][]  pairMap = {{HIT, HIT, HIT, HIT, HIT, HIT, HIT, HIT, HIT, HIT,}, //5-8
+												{HIT, DDS, DDS, DDS, DDS, HIT, HIT, HIT, HIT, HIT},
+												{DDS, DDS, DDS, DDS, DDS, DDS, DDS, DDS, HIT, HIT},
+												{DDS, DDS, DDS, DDS, DDS, DDS, DDS, DDS, DDS, HIT}}; 
+	
+	private static final Choice[][] softHandMap = new Choice[6][10];
+	
+	
+	private static final Choice[][] hardHandMap = new Choice[7][10];
+	
+	static {
+		//Hard hand
+	}
+	
+}
