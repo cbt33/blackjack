@@ -1,0 +1,20 @@
+package blackjack;
+
+import java.util.Vector;
+
+public class Player {
+	private Vector<Card> hand;
+	private int points;
+	
+	public int tallyPoints() {
+		this.points = 0;
+		for (Card card: hand) {
+			points += card.getValue(this);
+		}
+		return points;
+	}
+	
+	public int getPoints() {
+		return points;
+	}
+}

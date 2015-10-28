@@ -1,0 +1,22 @@
+package blackjack;
+
+import java.util.Vector;
+
+public class Player {
+	private Hand hand;
+	private int chips;
+	
+	public Hand getHand() {
+		return hand;
+	}
+
+	public void setHand(Hand hand) {
+		this.hand = hand;
+	}
+	
+	public int placeBet(Blackjack blackjack) {
+		int bet = 0;
+		return bet;
+	};
+
+}

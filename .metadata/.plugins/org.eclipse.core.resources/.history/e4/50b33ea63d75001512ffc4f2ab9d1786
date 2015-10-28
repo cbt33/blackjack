@@ -1,0 +1,33 @@
+package blackjack;
+
+public class Dealer extends Player {
+	private Shoe shoe;
+	private DealerHand dhand;
+	
+	public Card dealPlayer(Player player) {
+		Card card = shoe.getCards().pop();
+		player.getHand().addCard(card);
+		return card;
+	}
+	
+	public Card dealDealer() {
+		//Hole card
+		Card holeCard = shoe.getCards().pop();
+		//
+		dhand.setHoleCard(holeCard);
+		Card card = shoe.getCards().pop();
+		dhand.getCards().add(card);
+		return card;
+	}
+	
+	public Card hit(Player player) {
+		Card card = shoe.getCards().pop();
+		player.getHand().addCard(card);
+		return card;
+	}
+	
+	public void burn() {
+		shoe.getCards().pop();
+	}
+	
+}

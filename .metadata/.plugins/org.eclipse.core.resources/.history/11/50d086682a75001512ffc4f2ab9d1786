@@ -1,0 +1,17 @@
+package blackjack;
+
+import java.util.Vector;
+
+public class Blackjack {
+	
+	private Dealer dealer;
+	private Vector<Player> players;
+	
+	
+
+	//public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//
+	//}
+
+}

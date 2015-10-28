@@ -1,0 +1,47 @@
+package blackjack;
+
+import java.util.Vector;
+
+public class Player {
+	private Hand hand;
+	private int chips;
+	private int count;
+	private boolean hasBlackjack;
+	
+	public Hand getHand() {
+		return hand;
+	}
+
+	public void setHand(Hand hand) {
+		this.hand = hand;
+	}
+	
+	public int placeBet(Blackjack blackjack) {
+		int bet = 0;
+		return bet;
+	};
+	
+	public void count(Card card) {
+		switch (card.getRank()) {
+		case THREE:
+			count++;
+		case FOUR:
+			count++;
+		case FIVE:
+			count++;
+		case SIX:
+			count++;
+		case TEN:
+			count--;
+		case JACK:
+			count--;
+		case QUEEN:
+			count--;
+		case KING:
+			count--;
+		default:
+			return;
+		}
+	}
+
+}
