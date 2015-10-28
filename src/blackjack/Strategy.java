@@ -28,10 +28,8 @@ public class Strategy {
 						{SPL, SPL, SPL, SPL, SPL, HIT, HIT, HIT, HIT, HIT},  //5-5
 						{SPL, SPL, SPL, SPL, SPL, SPL, HIT, HIT, HIT, HIT},  //6-6
 						{STA, STA, STA, STA, STA, HIT, HIT, HIT, HIT, HIT},  //7-7
-						{SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL}}; //
-	
-	static {
-		//Hard hand
-	}
+						{SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL}}; //8-8
+
+	public Choice useStrategy(Hand hand, Card dealerUpCard) {}
 	
 }
