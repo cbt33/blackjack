@@ -6,7 +6,7 @@ import java.util.Hashtable;
 import java.util.Map;
 
 public class Strategy {
-												//2    3    4    5    6    7    8    9    10   A
+						     //2    3    4    5    6    7    8    9    10   A
 	private static final Choice[][]  hardHand = {{HIT, HIT, HIT, HIT, HIT, HIT, HIT, HIT, HIT, HIT,}, //5-8
 							{HIT, DDH, DDH, DDH, DDH, HIT, HIT, HIT, HIT, HIT},  //9
 							{DDH, DDH, DDH, DDH, DDH, DDH, DDH, DDH, HIT, HIT},  //10
@@ -39,12 +39,35 @@ public class Strategy {
 
 	public static Map dealerCardMap = new Hashtable();
 	static { 
-		for (int i=0; i <= 10; i++) {
-			dealerCardMap.put(Rank.TWO,0)
+		dealerCardMap.put(Rank.TWO, 0);
+		dealerCardMap.put(Rank.THREE, 1);
+		dealerCardMap.put(Rank.FOUR, 2);
+		dealerCardMap.put(Rank.FIVE, 3);
+		dealerCardMap.put(Rank.SIX, 4);
+		dealerCardMap.put(Rank.SEVEN, 5);
+		dealerCardMap.put(Rank.EIGHT, 6);
+		dealerCardMap.put(Rank.NINE, 7);
+		dealerCardMap.put(Rank.TEN, 8);
+		dealerCardMap.put(Rank.ACE, 9);
 		};
 	}
-
-			 
+	
+	public static Map hardHandMap = new Hashtable();
+	static { 
+		hardHandMap.put(5, 0);
+		hardHandMap.put(6, 0);
+		hardHandMap.put(7, 0);
+		for (int i = 0; i <=8; i++) {
+			hardHandMap.put(i+8, i);
+		}
+	}
+	
+	public static Map softHandMap = new Hashtable();
+	static {
+		for (int i = 0; i <= 9; i++) {
+			softHandMap.put(i+2, i);
+		}
+	}
 	}
 	
 	public int playerCardMap() { return 1; }
