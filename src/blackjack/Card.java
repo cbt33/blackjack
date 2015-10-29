@@ -47,6 +47,39 @@ public class Card {
 		}	
 	}
 	
+	public int getValue() {
+		switch (rank) {
+		case ACE:
+			return 10;
+		case EIGHT:
+			return 8;
+		case FIVE:
+			return 5;
+		case FOUR:
+			return 4;
+		case JACK:
+			return 10;
+		case KING:
+			return 10;
+		case NINE:
+			return 9;
+		case QUEEN:
+			return 10;
+		case SEVEN:
+			return 7;
+		case SIX:
+			return 6;
+		case TEN:
+			return 10;
+		case THREE:
+			return 3;
+		case TWO:
+			return 2;
+		default:
+			return 0;
+		}	
+	}
+	
 	public Rank getRank() {
 		return rank;
 	}
