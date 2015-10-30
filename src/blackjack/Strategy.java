@@ -40,8 +40,11 @@ public class Strategy {
 	public static Hashtable<Rank, Integer> dealerCardMap = new Hashtable<Rank, Integer>();
 	public static Hashtable<Integer, Integer> softHandMap = new Hashtable<Integer, Integer>();
 	public static Hashtable<Integer, Integer> hardHandMap = new Hashtable<Integer, Integer>();
+	public static Hashtable<Rank, Integer> splitMap = new Hashtable<Rank, Integer>();
 	
-	static { 
+	static {
+		
+		//Dealer Face up card
 		dealerCardMap.put(Rank.TWO, 0);
 		dealerCardMap.put(Rank.THREE, 1);
 		dealerCardMap.put(Rank.FOUR, 2);
@@ -56,25 +59,46 @@ public class Strategy {
 		dealerCardMap.put(Rank.KING, 8);
 		dealerCardMap.put(Rank.ACE, 9);
 		
+		//For hard hands
 		hardHandMap.put(5, 0);
 		hardHandMap.put(6, 0);
 		hardHandMap.put(7, 0);
 		for (int i = 0; i <=8; i++) {
 			hardHandMap.put(i+8, i);
 		}
-	
+		
+		//For soft hands
 		for (int i = 0; i <= 9; i++) {
 			softHandMap.put(i+2, i);
 		}
+		
+		//For splittable hands
+		splitMap.put(Rank.TWO, 0);
+		splitMap.put(Rank.THREE, 1);
+		splitMap.put(Rank.FOUR, 2);
+		splitMap.put(Rank.FIVE, 3);
+		splitMap.put(Rank.SIX, 4);
+		splitMap.put(Rank.SEVEN, 5);
+		splitMap.put(Rank.EIGHT, 6);
+		splitMap.put(Rank.NINE, 7);
+		splitMap.put(Rank.TEN, 8);
+		splitMap.put(Rank.JACK, 8);
+		splitMap.put(Rank.QUEEN, 8);
+		splitMap.put(Rank.KING, 8);
 		
 	}
 	
 	public static Choice useStrategy(Hand hand, Card dealerUpCard) {
 		
+		if (hand.canSplit()){}
+		
 		if (hand.isSoft())
 		{
 			return softHand[softHandMap.get(key)][dealerCardMap.get(dealerUpCard)];
 		}
+		
+		return hardHand[hand.getValue()][];
+		
 	}
 	
 }
