@@ -37,7 +37,10 @@ public class Strategy {
 						{STA, STA, STA, STA, STA, HIT, HIT, HIT, HIT, HIT},  //8-8
 						{SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL}}; //9-9
 
-	public static Map dealerCardMap = new Hashtable();
+	public static Hashtable<Rank, Integer> dealerCardMap = new Hashtable<Rank, Integer>();
+	public static Hashtable<Integer, Integer> softHandMap = new Hashtable<Integer, Integer>();
+	public static Hashtable<Integer, Integer> hardHandMap = new Hashtable<Integer, Integer>();
+	
 	static { 
 		dealerCardMap.put(Rank.TWO, 0);
 		dealerCardMap.put(Rank.THREE, 1);
@@ -48,38 +51,29 @@ public class Strategy {
 		dealerCardMap.put(Rank.EIGHT, 6);
 		dealerCardMap.put(Rank.NINE, 7);
 		dealerCardMap.put(Rank.TEN, 8);
+		dealerCardMap.put(Rank.JACK, 8);
+		dealerCardMap.put(Rank.QUEEN, 8);
+		dealerCardMap.put(Rank.KING, 8);
 		dealerCardMap.put(Rank.ACE, 9);
-		};
-	}
-	
-	public static Map hardHandMap = new Hashtable();
-	static { 
+		
 		hardHandMap.put(5, 0);
 		hardHandMap.put(6, 0);
 		hardHandMap.put(7, 0);
 		for (int i = 0; i <=8; i++) {
 			hardHandMap.put(i+8, i);
 		}
-	}
 	
-	public static Map softHandMap = new Hashtable();
-	static {
 		for (int i = 0; i <= 9; i++) {
 			softHandMap.put(i+2, i);
 		}
-	}
-	}
-	
-	public int playerCardMap() { return 1; }
-	
-	public int dealerCardMap(Card dealerUpCard) {
-		switch (dealerUpCard.getValue()) {
+		
 	}
 	
 	public static Choice useStrategy(Hand hand, Card dealerUpCard) {
+		
 		if (hand.isSoft())
 		{
-			
+			return softHand[softHandMap.get(key)][dealerCardMap.get(dealerUpCard)];
 		}
 	}
 	
