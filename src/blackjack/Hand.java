@@ -32,7 +32,7 @@ public class Hand {
 		return points;
 	}
 
-	public void setPoints(int points) {
+	public void setPoints(int points) {	
 		this.points = points;
 	}
 
