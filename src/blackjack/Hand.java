@@ -7,7 +7,8 @@ public class Hand {
 	private Vector<Card> cards;
 	private int points;
 	private Vector<Card> aces;
-	private boolean isSoft = false;
+	//private boolean isSoft = false;
+	//private boolean isSplittable();
 	
 	public void addCard(Card card) {
 		if (card.getRank() == Rank.ACE) {
@@ -37,11 +38,17 @@ public class Hand {
 	}
 
 	public boolean isSoft() {
-		return isSoft;
+		if (aces[0] != null)
+			return true;
+		else
+			return false;
 	}
-
-	public void setSoft(boolean isSoft) {
-		this.isSoft = isSoft;
+	
+	public boolean isSplittable() {
+		if (cards.size()==2 && cards[0].getRank() == cards[1].getRank()) || aces.size()==2 && cards.size() == 0)
+			return true;
+		else
+			return false;
 	}
 
 	public void setCards(Vector<Card> cards) {

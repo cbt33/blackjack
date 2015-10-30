@@ -4,6 +4,7 @@ import java.util.Vector;
 
 public class Player {
 	private Hand hand;
+	private Hand splitHand;
 	private int chips;
 	private int count;
 	private boolean hasBlackjack;
@@ -16,6 +17,12 @@ public class Player {
 
 	public void setHand(Hand hand) {
 		this.hand = hand;
+	}
+	
+	public void splitHand() {
+		if (hand.isSplittable())
+			splitHand = new Hand();
+			splitHand.add(card[1]);
 	}
 	
 	public int placeBet(Blackjack blackjack) {
