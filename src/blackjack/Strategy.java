@@ -92,7 +92,7 @@ public class Strategy {
 	public static Choice useStrategy(Hand hand, Card dealerUpCard) {
 		
 		if (hand.canSplit()) {
-			
+			return split[splitMap.get(hand.get(0)][dealerCardMap.get(dealerUpCard)]
 		}
 		
 		if (hand.isSoft())
