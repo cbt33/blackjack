@@ -35,7 +35,8 @@ public class Strategy {
 						{SPL, SPL, SPL, SPL, SPL, HIT, HIT, HIT, HIT, HIT},  //6-6
 						{SPL, SPL, SPL, SPL, SPL, SPL, HIT, HIT, HIT, HIT},  //7-7
 						{STA, STA, STA, STA, STA, HIT, HIT, HIT, HIT, HIT},  //8-8
-						{SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL}}; //9-9
+						{SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL, SPL},  //9-9
+						{STA, STA, STA, STA, STA, STA, STA, STA, STA, STA}}; //10-10
 
 	public static Hashtable<Rank, Integer> dealerCardMap = new Hashtable<Rank, Integer>();
 	public static Hashtable<Integer, Integer> softHandMap = new Hashtable<Integer, Integer>();
@@ -90,13 +91,17 @@ public class Strategy {
 	
 	public static Choice useStrategy(Hand hand, Card dealerUpCard) {
 		
-		if (hand.canSplit()){}
+		if (hand.canSplit()) {
+			
+		}
 		
 		if (hand.isSoft())
 		{
 			return softHand[softHandMap.get(key)][dealerCardMap.get(dealerUpCard)];
 		}
 		
+		if (hand.tallyPoints() >= 17)
+			return STA;
 		return hardHand[hand.getValue()][];
 		
 	}
