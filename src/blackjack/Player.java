@@ -20,9 +20,9 @@ public class Player {
 	}
 	
 	public void splitHand() {
-		if (hand.isSplittable())
+		if (hand.canSplit())
 			splitHand = new Hand();
-			splitHand.add(card[1]);
+			//splitHand.add(hand.get);
 	}
 	
 	public int placeBet(Blackjack blackjack) {
@@ -30,10 +30,26 @@ public class Player {
 		return bet;
 	};
 	
-	public void play(Blackjack blackjack) {
+	public void play(Blackjack blackjack) throws CloneNotSupportedException {
 		Card dealerCard = blackjack.getDealer().getHand().getCards().get(0);
 		while (!isStand && !isBust) {
-			
+			switch (Strategy.useStrategy(hand, dealerCard)) {
+			case DDH:
+				break;
+			case DDS:
+				break;
+			case HIT:
+				blackjack.getDealer().dealPlayer(this);
+				break;
+			case SPL:
+				break;
+			case STA:
+				break;
+			case SUR:
+				break;
+			default:
+				break;
+			}
 		}
 	}
 	

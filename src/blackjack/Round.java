@@ -41,7 +41,7 @@ public class Round {
 	//-player can double down, receives only one more card
 	//-player can split if two cards received of same face value, place equal bet alongside first bet, plays each separately
 	//-
-	public void playerPlay() {
+	public void playerPlay() throws CloneNotSupportedException {
 		for (Player player : blackjack.getPlayers()) {
 			if (player != null) {
 					player.play(blackjack);

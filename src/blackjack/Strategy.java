@@ -89,20 +89,21 @@ public class Strategy {
 		
 	}
 	
-	public static Choice useStrategy(Hand hand, Card dealerUpCard) {
+	public static Choice useStrategy(Hand hand, Card dealerUpCard) throws CloneNotSupportedException {
 		
 		if (hand.canSplit()) {
-			return split[splitMap.get(hand.get(0)][dealerCardMap.get(dealerUpCard)]
+			return split[splitMap.get(hand.getCards().get(0))][dealerCardMap.get(dealerUpCard)];
 		}
 		
 		if (hand.isSoft())
 		{
-			return softHand[softHandMap.get(key)][dealerCardMap.get(dealerUpCard)];
+				return softHand[softHandMap.get(hand.tallyPoints(true))][dealerCardMap.get(dealerUpCard)];
 		}
 		
-		if (hand.tallyPoints() >= 17)
+		if (hand.tallyPoints(true) >= 17)
 			return STA;
-		return hardHand[hand.getValue()][];
+		
+		return hardHand[hand.getPoints()][dealerCardMap.get(dealerUpCard)];
 		
 	}
 	

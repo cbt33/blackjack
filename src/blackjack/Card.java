@@ -5,7 +5,7 @@ public class Card {
 	private Suit suit;
 	private Rank rank;
 	
-	Card(Suit s, Rank r) {
+	public Card(Suit s, Rank r) {
 		suit = s;
 		rank = r;
 	}
@@ -47,6 +47,12 @@ public class Card {
 		}	
 	}
 	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return new Card(this.getSuit(), this.getRank());
+	}
+
 	public int getValue() {
 		switch (rank) {
 		case ACE:

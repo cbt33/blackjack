@@ -1,32 +1,43 @@
 package blackjack;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Hand {
 
-	private Vector<Card> cards;
+	private ArrayList<Card> cards;
 	private int points;
-	private Vector<Card> aces;
-	//private boolean isSoft = false;
-	//private boolean isSplittable();
 	
 	public void addCard(Card card) {
-		if (card.getRank() == Rank.ACE) {
-			isSoft = true;
-			aces.add(card);
-		} else {
 			cards.add(card);
-		}
 	}
 	
-	public void tallyPoints() {
+	public int tallyPoints(boolean lessAces) throws CloneNotSupportedException {
 		this.points = 0;
+		Hand aces = new Hand();
 		for (Card card: cards) {
+			if (card.getRank() == Rank.ACE) {
+				aces.addCard((Card)card.clone());
+			}
+			else {
+				this.points += card.getValue(this);
+			}
+			
+			if (!lessAces) {
+				for (Card ace: aces.getCards()) {
+					this.points+=ace.getValue(this);
+				}
+			}
+			
+			return this.points;
+			
+		}
+		
+		
+		for (Card card: aces.getCards()) {
 			this.points += card.getValue(this);
 		}
-		for (Card ace : aces) {
-			this.points += ace.getValue(this);
-		}
+		
+		return this.points;
 	}
 	
 	public int getPoints() {
@@ -38,42 +49,35 @@ public class Hand {
 	}
 
 	public boolean isSoft() {
-		if (aces[0] != null)
-			return true;
-		else
-			return false;
+		for (Card card: this.getCards()) {
+			if (card.getRank() == Rank.ACE)
+				return true;
+		}
+		return false;
 	}
 	
-	public boolean isSplittable() {
-		if (cards.size()==2 && cards[0].getRank() == cards[1].getRank()) || aces.size()==2 && cards.size() == 0)
+	public boolean canSplit() {
+		if (cards.size()==2 && cards.get(0).getRank() == cards.get(1).getRank())
 			return true;
 		else
 			return false;
 	}
 
-	public void setCards(Vector<Card> cards) {
+	public void setCards(ArrayList<Card> cards) {
 		this.cards = cards;
 	}
 
-	public void setAces(Vector<Card> aces) {
-		this.aces = aces;
-	}
 
-	public Vector<Card> getCards() {
+	public ArrayList<Card> getCards() {
 		return cards;
-	}
-	
-	public Vector<Card> getAces() {
-		return aces;
 	}
 	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((aces == null) ? 0 : aces.hashCode());
 		result = prime * result + ((cards == null) ? 0 : cards.hashCode());
-		result = prime * result + (isSoft ? 1231 : 1237);
+		result = prime * result + (isSoft() ? 1231 : 1237);
 		result = prime * result + points;
 		return result;
 	}
@@ -87,17 +91,10 @@ public class Hand {
 		if (getClass() != obj.getClass())
 			return false;
 		Hand other = (Hand) obj;
-		if (aces == null) {
-			if (other.aces != null)
-				return false;
-		} else if (!aces.equals(other.aces))
-			return false;
 		if (cards == null) {
 			if (other.cards != null)
 				return false;
 		} else if (!cards.equals(other.cards))
-			return false;
-		if (isSoft != other.isSoft)
 			return false;
 		if (points != other.points)
 			return false;
