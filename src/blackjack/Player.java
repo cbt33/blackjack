@@ -3,7 +3,7 @@ package blackjack;
 import java.util.Vector;
 
 public class Player {
-	private Hand hand;
+	private ArrayList<Hand> hands;
 	private Hand splitHand;
 	private int chips;
 	private int count;
@@ -11,18 +11,23 @@ public class Player {
 	private boolean isBust;
 	private boolean isStand;
 	
-	public Hand getHand() {
-		return hand;
+	public ArrayList<Hand> getHands() {
+		return hands;
 	}
 
-	public void setHand(Hand hand) {
-		this.hand = hand;
+	public void setHands(ArrayList<Hand> hands) {
+		this.hands = hands;
 	}
 	
-	public void splitHand() {
+	public void splitHand(Hand hand) throws HandCantBeSplitException {
 		if (hand.canSplit())
 			splitHand = new Hand();
+			splitHand.getCards().add(hand.getCards(0).copy());
+			hands.add(splitHand);
+			hand.remove(0);
 			//splitHand.add(hand.get);
+		else
+			throw new HandCantBeSplitException();
 	}
 	
 	public int placeBet(Blackjack blackjack) {
