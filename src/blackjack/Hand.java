@@ -6,6 +6,9 @@ public class Hand {
 
 	private ArrayList<Card> cards;
 	private int points;
+	private boolean isStand;
+	private boolean isBust;
+	private boolean isBlackjack;
 	
 	public void addCard(Card card) {
 			cards.add(card);
