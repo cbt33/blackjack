@@ -33,9 +33,8 @@ public class Player {
 		return bet;
 	};
 	
-	public void play(Blackjack blackjack) throws CloneNotSupportedException {
-		Card dealerCard = 
-		Card dealerCard = blackjack.getDealer().getHands()[0].getCards().get(0);
+	public void play(Blackjack blackjack, Hand hand) throws CloneNotSupportedException {
+		Card dealerCard = (Card)blackjack.getDealer().getHands()[0].getCards().get(0).clone();
 		while (!isStand && !isBust) {
 			switch (Strategy.useStrategy(hand, dealerCard)) {
 			case Choice.DDH:
@@ -43,7 +42,7 @@ public class Player {
 			case Choice.DDS:
 				break;
 			case Choice.HIT:
-				blackjack.getDealer().dealPlayer(this);
+				blackjack.getDealer().dealPlayer(hand);
 				break;
 			case Choice.SPL:
 				break;
