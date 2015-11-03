@@ -1,5 +1,6 @@
 package blackjack;
 
+import java.util.ArrayList;
 import java.util.Vector;
 
 public class Player {
@@ -14,20 +15,17 @@ public class Player {
 	public ArrayList<Hand> getHands() {
 		return hands;
 	}
-
-	public void setHands(ArrayList<Hand> hands) {
-		this.hands = hands;
-	}
 	
-	public void splitHand(Hand hand) throws HandCantBeSplitException {
-		if (hand.canSplit())
+	public void splitHand(Hand hand) throws HandCantBeSplitException, CloneNotSupportedException {
+		if (hand.canSplit()) {
 			splitHand = new Hand();
-			splitHand.getCards().add(hand.getCards(0).copy());
+			splitHand.getCards().add((Card)hand.getCards().get(0).clone());
 			hands.add(splitHand);
-			hand.remove(0);
+			hand.getCards().remove(0);
 			//splitHand.add(hand.get);
-		else
+		} else {
 			throw new HandCantBeSplitException();
+			}
 	}
 	
 	public int placeBet(Blackjack blackjack) {
@@ -36,21 +34,22 @@ public class Player {
 	};
 	
 	public void play(Blackjack blackjack) throws CloneNotSupportedException {
-		Card dealerCard = blackjack.getDealer().getHand().getCards().get(0);
+		Card dealerCard = 
+		Card dealerCard = blackjack.getDealer().getHands()[0].getCards().get(0);
 		while (!isStand && !isBust) {
 			switch (Strategy.useStrategy(hand, dealerCard)) {
-			case DDH:
+			case Choice.DDH:
 				break;
-			case DDS:
+			case Choice.DDS:
 				break;
-			case HIT:
+			case Choice.HIT:
 				blackjack.getDealer().dealPlayer(this);
 				break;
-			case SPL:
+			case Choice.SPL:
 				break;
-			case STA:
+			case Choice.STA:
 				break;
-			case SUR:
+			case Choice.SUR:
 				break;
 			default:
 				break;
