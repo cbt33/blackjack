@@ -7,10 +7,14 @@ public class Dealer extends Player {
 	public Card dealPlayer(Player player) {
 		Card card = shoe.getCards().pop();
 		player.getHands()[0].addCard(card.clone());
-		return card;
+		return (Card)card.clone();
 	}
 	
-	public Card hitPlayer()
+	public Card hitHand(Hand hand) {
+		Card card = shoe.getCards().pop();
+		player.getHands()[0].addCard((Card)card.clone());
+		return (Card)card.clone();
+	}
 	
 	public Card dealDealer() {
 		//Hole card
