@@ -44,10 +44,12 @@ public class Round {
 	public void playerPlay() throws CloneNotSupportedException {
 		for (Player player : blackjack.getPlayers()) {
 			if (player != null) {
-					player.play(blackjack);
+				for (Hand hand : player.getHands()) {
+					player.play(blackjack, hand);
 				}
 			}
 		}
+	}
 	
 	//Dealer reveals hole card and hits or stands
 	//If player total higher than dealers, player wins
