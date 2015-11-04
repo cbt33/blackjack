@@ -45,6 +45,7 @@ public class Round {
 		for (Player player : blackjack.getPlayers()) {
 			if (player != null) {
 				for (Hand hand : player.getHands()) {
+					if (hand != null && !hand.isBust() && !hand.isBlackjack() && !isStand())
 					player.play(blackjack, hand);
 				}
 			}
