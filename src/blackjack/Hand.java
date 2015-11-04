@@ -30,16 +30,9 @@ public class Hand {
 					this.points+=ace.getValue(this);
 				}
 			}
-			
-			return this.points;
-			
 		}
-		
-		
-		for (Card card: aces.getCards()) {
-			this.points += card.getValue(this);
-		}
-		
+		if (this.points > 21)
+			isBust = true;
 		return this.points;
 	}
 	
