@@ -14,8 +14,8 @@ public class Card {
 	public int getValue(Hand hand) {
 		switch (rank) {
 		case ACE:
-			if (hand.getPoints() <= 11)
-				return 10;
+			if (hand.getPoints() <= 10)
+				return 11;
 			else
 				return 1;
 		case EIGHT:
@@ -56,7 +56,7 @@ public class Card {
 	public int getValue() {
 		switch (rank) {
 		case ACE:
-			return 10;
+			return 11;
 		case EIGHT:
 			return 8;
 		case FIVE:
