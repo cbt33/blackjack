@@ -8,6 +8,7 @@ public class Player {
 	private Hand splitHand;
 	private int chips;
 	private int count;
+	private int bet;
 	private boolean hasBlackjack;
 	private boolean isBust;
 	private boolean isStand;
@@ -28,8 +29,9 @@ public class Player {
 			}
 	}
 	
-	public int placeBet(Blackjack blackjack) {
-		int bet = 0;
+	public int placeBet(Blackjack blackjack, int bet) {
+		this.bet = bet;
+		chips-=bet;
 		return bet;
 	};
 	
@@ -40,15 +42,19 @@ public class Player {
 			case Choice.DDH:
 				break;
 			case Choice.DDS:
+				
 				break;
 			case Choice.HIT:
 				blackjack.getDealer().dealPlayer(hand);
 				break;
 			case Choice.SPL:
+				splitHand(hand);
 				break;
 			case Choice.STA:
+				hand.setIsStand(true);
 				break;
 			case Choice.SUR:
+				hand.setIsBust(true);
 				break;
 			default:
 				break;
