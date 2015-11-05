@@ -53,7 +53,23 @@ public class Round {
 	}
 	
 	//Dealer reveals hole card and hits or stands
+	public void dealerPlay() {
+		count(blackjack.getDealer().addHoleCardToHand());
+		blackjack.getDealer.play(blackjack, hand);
+	}
+	
 	//If player total higher than dealers, player wins
+	public void resolve() {
+		for (Player player : blackjack.getPlayers())
+			for (Hand hand : player.getHands())
+				if (!hand.isBust()) {
+					if (hand.tallyPoints(false) > blackjack.getDealer().getHands()[0].tallyPoints(false)) {
+						player.addChips(2*player.getBet)
+					} else {
+						bet = 0;
+					}
+				}
+	}
 	//-If player has blackjack, dealer pays 3 to 2
 	//If both get blackjack, it is push, neither loses money
 	//If player has higher total, dealer matches bet
