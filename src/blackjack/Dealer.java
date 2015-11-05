@@ -26,8 +26,25 @@ public class Dealer extends Player {
 		return card;
 	}
 	
+	public Card addHoleCardToHand() {
+		Card holeCard = dhand.getHoleCard();
+		dhand.getHands()[0].add((Card)holeCard.clone());
+		dhand.setHoleCard(null);
+		return (Card)holeCard.clone();
+	}
+	
 	public void burn() {
 		shoe.getCards().pop();
+	}
+	
+	@Override
+	public void play(Blackjack blackjack, Hand hand) {
+		if (tallyPoints() <= 17) {
+			hitHand(this.getHands()[0])
+		} else {
+			setIsStand(true);
+			return;
+		}
 	}
 	
 }
